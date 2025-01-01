@@ -20,7 +20,7 @@ def fetch_csrf_and_session():
 
     # Extract session cookie
     cookies = response.cookies.get_dict()
-    session_id = cookies.get('laravel_session')
+    session_id = cookies.get('kfcbd_session')
 
     if not csrf_token or not session_id:
         raise Exception("Error: Could not retrieve CSRF token or session cookie.")
@@ -34,12 +34,12 @@ def send_request(csrf_token, session_id, mobile):
         "Host": "kfcbd.com",
         "Content-Type": "application/json",
         "X-CSRF-Token": csrf_token,
-        "Cookie": f"laravel_session={session_id}"
+        "Cookie": f"kfcbd_session={session_id}"
     }
 
     payload = {
         "fingerprint": {
-            "id": "mspgNZ0vQJVQ3QC8nh3C",
+            "id": "RGNDZbRhQQMF7FFcuhtd",
             "name": "home.login",
             "locale": "en",
             "path": "login",
@@ -49,7 +49,7 @@ def send_request(csrf_token, session_id, mobile):
         "serverMemo": {
             "children": [],
             "errors": [],
-            "htmlHash": "ba69bf66",
+            "htmlHash": "e5067a93",
             "data": {
                 "mobile": None,
                 "step": 1,
@@ -58,7 +58,7 @@ def send_request(csrf_token, session_id, mobile):
                 "previous_url": "https://kfcbd.com"
             },
             "dataMeta": [],
-            "checksum": "bcc25092e64ce585571bd236376d664225e7e183261875447e2dfc46caf6b62f"
+            "checksum": "74e49cafeaf3973778f00c30cc028017653e90cbfe4bfb358f0930ee040d6d9c"
         },
         "updates": [
             {
