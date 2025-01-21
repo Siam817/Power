@@ -5,6 +5,9 @@ import time
 # List of API modules (add your API module names without ".py")
 api_modules = [f"api_{i}" for i in range(1, 31)]  # Dynamically generate API names (api_1 to api_30)
 
+# Blocklist numbers
+blocklist = ["01892038391", "01602423817"]
+
 def run_api(api_module_name, mobile, threads):
     """
     Dynamically import and run the main function of the specified API module.
@@ -21,6 +24,10 @@ def main():
     Main function to run all API modules concurrently.
     """
     mobile = input("Enter mobile number (11 digits): ").strip()
+    if mobile in blocklist:
+        print("\nMima Ni Pin Ka Maror Tur Jamai Re...\n")
+        return
+
     if len(mobile) != 11 or not mobile.isdigit():
         print("[ERROR] Invalid mobile number. Please enter a valid 11-digit number.")
         return
