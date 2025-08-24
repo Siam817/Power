@@ -1,6 +1,22 @@
 import importlib
 import concurrent.futures
 import time
+import os
+import subprocess
+
+# -------- Auto Update Section --------
+def auto_update():
+    try:
+        print("🔄 Checking for updates...")
+        # বর্তমান ডিরেক্টরি git repo হলে pull করবে
+        if os.path.exists(".git"):
+            subprocess.run(["git", "pull"], check=True)
+        else:
+            print("⚠️ No .git folder found, skipping update.")
+    except Exception as e:
+        print(f"❌ Auto update failed: {e}")
+# -------------------------------------
+
 
 def send_requests(phone_number, amount):
     total_apis = 150
@@ -45,7 +61,11 @@ def send_requests(phone_number, amount):
 
     print("All requests completed!")
 
+
 if __name__ == "__main__":
+    # প্রথমেই auto update হবে
+    auto_update()
+
     # Input from the user
     phone_number = input("Enter phone number (without country code): ")
     amount = int(input("Enter number of request rounds: "))
